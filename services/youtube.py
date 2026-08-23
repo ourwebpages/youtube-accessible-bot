@@ -12,6 +12,11 @@ class VideoInfo:
     duration: int
 
 
+class YouTubeService:
+    def get_video(self, video_id: str) -> VideoInfo:
+        return extract_video(f"https://www.youtube.com/watch?v={video_id}")
+
+
 def extract_video(url: str) -> VideoInfo:
     options = {"quiet": True, "no_warnings": True, "skip_download": True}
     with yt_dlp.YoutubeDL(options) as ydl:
